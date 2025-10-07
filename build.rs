@@ -17,6 +17,7 @@ fn main() {
     }
 
     let mut shared_compiler = cc::Build::new();
+    shared_compiler.opt_level(0); // RedactedOS has issues with optimizations
     shared_compiler.files(glob::glob("vendor/RedactedOS/shared/**/*.[cS]").expect("failed to read vendor/RedactedOS").filter_map(Result::ok));
     // -ffreestanding -nostdlib -fno-exceptions -fno-unwind-tables \
     //  -fno-asynchronous-unwind-tables -g -O0 -Wall -Wextra \
