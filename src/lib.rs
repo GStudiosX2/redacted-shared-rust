@@ -13,6 +13,7 @@ pub mod allocator;
 pub mod process;
 /* RedactedOS doesn't have the concept of threads yet but im trying to build ruststd-like API */
 pub mod thread;
+pub mod backtrace;
 
 #[macro_use]
 mod macros;

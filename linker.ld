@@ -6,8 +6,4 @@ SECTIONS {
     .bss : { *(.bss) }
     .rodata : { *(.rodata) }
     .data : { *(.data) }
-
-    /DISCARD/ : {
-        *(.comment .note .eh_frame)
-    }
 }
