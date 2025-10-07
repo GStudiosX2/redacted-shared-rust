@@ -1,0 +1,3 @@
+[submodule "vendor/RedactedOS"]
+	path = vendor/RedactedOS
+	url = https://github.com/differrari/RedactedOS.git
