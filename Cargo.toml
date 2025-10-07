@@ -13,6 +13,7 @@ test = false
 bench = false
 
 [dependencies]
+bitmask-enum = "2.2.5"
 
 [build-dependencies]
 cc = "1.0"

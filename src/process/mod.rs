@@ -1,7 +1,8 @@
 use core::{convert::Infallible, fmt};
 
 unsafe extern "C" {
-    pub unsafe fn halt(exit_code: u32) -> !;
+    #[link_name = "halt"]
+    pub unsafe fn ffi_exit(exit_code: u32) -> !;
 }
 
 pub enum ExitCode {
@@ -11,7 +12,7 @@ pub enum ExitCode {
 
 impl ExitCode {
     pub fn exit_process(self) -> ! {
-        unsafe { halt(self as u32); }
+        unsafe { ffi_exit(self as u32); }
     }
 }
 
