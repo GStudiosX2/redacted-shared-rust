@@ -1,6 +1,6 @@
 use core::{fmt::{self, Write}, ffi::c_char};
 
-use alloc::{ffi::CString, vec::Vec};
+use alloc::{ffi::CString, string::String};
 
 pub mod input;
 
@@ -19,18 +19,9 @@ pub fn puts(str: &str) {
 
 #[doc(hidden)]
 pub fn putfmt(fmt: fmt::Arguments) -> fmt::Result {
-    struct FmtBuf(Vec<u8>);
-
-    impl fmt::Write for FmtBuf {
-        fn write_str(&mut self, s: &str) -> fmt::Result {
-            self.0.extend(s.as_bytes());
-            Ok(())
-        }
-    }
-
-    let mut buf = FmtBuf(Vec::with_capacity(16));
-    buf.write_fmt(fmt)?;
-    let cstr = CString::new(buf.0).unwrap();
+    let mut s = String::new();
+    s.write_fmt(fmt).unwrap();
+    let cstr = CString::new(s).unwrap();
     unsafe { ffi_printl(cstr.as_ptr()); }
     Ok(())
 }
