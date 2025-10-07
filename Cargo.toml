@@ -3,6 +3,11 @@ name = "redacted-shared-rs"
 version = "0.1.0"
 edition = "2024"
 
+include = [
+    "src/**/*", "build.rs", "Cargo.toml",
+    "/linker.ld", "/README.md", "/LICENSE",
+]
+
 [lib]
 test = false
 bench = false
