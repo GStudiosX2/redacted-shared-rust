@@ -26,7 +26,7 @@ fn main() {
     shared_compiler.flags([
         "-ffreestanding", "-nostdlib", "-fno-exceptions", "-fno-unwind-tables",
         "-fno-asynchronous-unwind-tables", "-Wno-unused-parameter", "-Wno-address-of-packed-member", 
-        "-mcpu=cortex-a72", "-Werror", "-Wno-error=sized-deallocation"
+        "-mcpu=cortex-a72", "-Werror", "-Wno-error=sized-deallocation", "-Wno-error=unused-function"
     ]);
     shared_compiler.include("vendor/RedactedOS/shared");
     shared_compiler.include("vendor/RedactedOS/kernel");

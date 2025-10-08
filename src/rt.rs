@@ -1,10 +1,10 @@
 use core::panic::PanicInfo;
 
-use crate::process::{self, Termination};
+use crate::{println, process::{self, Termination}};
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    // TODO: print panic info
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
     process::ExitCode::FAILURE.exit_process()
 }
 
