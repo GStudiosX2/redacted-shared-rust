@@ -18,6 +18,7 @@ pub extern crate unix_path as path;
 pub mod fs;
 
 pub mod backtrace;
+pub mod random;
 
 #[macro_use]
 mod macros;
