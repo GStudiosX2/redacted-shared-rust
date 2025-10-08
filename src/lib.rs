@@ -14,6 +14,8 @@ pub mod process;
 /* RedactedOS doesn't have the concept of threads yet but im trying to build ruststd-like API */
 pub mod thread;
 pub mod time;
+pub extern crate unix_path as path;
+pub mod fs;
 
 pub mod backtrace;
 

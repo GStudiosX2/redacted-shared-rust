@@ -11,10 +11,12 @@ unsafe extern "C" {
 pub struct RedactedAllocator;
 
 unsafe impl GlobalAlloc for RedactedAllocator {
+    #[inline]
     unsafe fn alloc(&self, layout: core::alloc::Layout) -> *mut u8 {
         unsafe { malloc(layout.pad_to_align().size()) }
     }
 
+    #[inline]
     unsafe fn dealloc(&self, ptr: *mut u8, layout: core::alloc::Layout) {
         unsafe { free(ptr, layout.pad_to_align().size()); }
     }

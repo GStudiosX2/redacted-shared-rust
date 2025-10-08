@@ -14,6 +14,7 @@ bench = false
 
 [dependencies]
 bitmask-enum = "2.2.5"
+unix_path = { version = "1.0.1", default-features = false, features = ["alloc"] }
 
 [build-dependencies]
 cc = "1.0"
