@@ -1,5 +1,7 @@
 use core::{convert::Infallible, fmt};
 
+use crate::println;
+
 unsafe extern "C" {
     #[link_name = "halt"]
     pub unsafe fn ffi_exit(exit_code: u32) -> !;
@@ -16,6 +18,11 @@ impl ExitCode {
     }
 }
 
+#[lang = "termination"]
+#[diagnostic::on_unimplemented(
+    message = "`main` has invalid return type `{Self}`",
+    label = "`main` can only return types that implement `{Self}`"
+)]
 pub trait Termination {
     fn report(self) -> ExitCode;   
 }
@@ -48,7 +55,8 @@ impl<T: Termination, E: fmt::Debug> Termination for Result<T, E> {
     fn report(self) -> ExitCode {
         match self {
             Ok(val) => val.report(),
-            Err(_) => {
+            Err(e) => {
+                println!("Error: {:#?}", e);
                 ExitCode::FAILURE
             }
         }
