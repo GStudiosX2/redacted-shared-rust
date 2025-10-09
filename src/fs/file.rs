@@ -63,7 +63,7 @@ unsafe extern "C" {
     pub unsafe fn ffi_fread(descriptor: *mut FileDescriptor, buf: *mut c_char, size: u64) -> u64;
 }
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct File {
     descriptor: FileDescriptor,
 }
